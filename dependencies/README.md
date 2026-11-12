@@ -13,10 +13,10 @@ and license texts are in [`COPYRIGHT.txt`](../COPYRIGHT.txt).
 | Library | What it does in MochyEngine | Version | Added | License |
 |---|---|---|---|---|
 | [AngelScript](https://www.angelcode.com/angelscript/) | Scripting language for game logic | 2.39.0 | 2026-11-12 | Zlib |
-| [Box2D](https://github.com/erincatto/box2d) | 2D physics | 3.2.0 | 2026-11-12 | MIT |
+| [Box2D](https://github.com/erincatto/box2d) | 2D physics | 3.2.0+ | 2026-11-12 | MIT |
 | [glad](https://glad.dav1d.de/) | Loads OpenGL functions | OpenGL 4.6 core (glad 0.1.36) | 2026-11-12 | MIT / Apache-2.0 |
 | [GLFW](https://github.com/glfw/glfw) | Window, keyboard, mouse and gamepad input | 3.5.1 | 2026-11-12 | Zlib |
-| [GLM](https://github.com/g-truc/glm) | Math (vectors, matrices) | 1.1.0 | 2026-11-12 | MIT |
+| [GLM](https://github.com/g-truc/glm) | Math (vectors, matrices) | 1.0.3+ | 2026-11-12 | MIT / Happy Bunny |
 | [Dear ImGui](https://github.com/ocornut/imgui) | Editor user interface | 1.93.1 WIP (docking) | 2026-11-12 | MIT |
 | [miniaudio](https://github.com/mackron/miniaudio) | Sound and music playback | 0.11.26 | 2026-11-12 | Public domain / MIT-0 |
 | [Quill](https://github.com/odygrd/quill) | Logging | 13.1.0 | 2026-11-12 | MIT |
@@ -55,9 +55,17 @@ and license texts are in [`COPYRIGHT.txt`](../COPYRIGHT.txt).
 - **glad:** generated with
   `--profile="core" --api="gl=4.6" --generator="c" --spec="gl" --extensions=""`
   ([open in the online generator](https://glad.dav1d.de/#profile=core&language=c&specification=gl&loader=on&api=gl%3D4.6)).
-- **AngelScript:** probably from a GitHub mirror (the folder contained a `.github/` directory).
-  The official download is the ZIP on angelcode.com.
-- **stb_image:** `LICENSE` was copied from the root of the stb repository.
+- **Box2D:** `main` branch, commit `dd8bd3fb525f0f33f1079f8ca3c5770783c44a53` (2026-10-30).
+  This commit is newer than the 3.2.0 release, although `CMakeLists.txt` still says 3.2.0.
+- **GLM:** `master` branch, commit `6f14f4792a0cde5d0cf2c910506724d61cb95834` (2026-04-07).
+  This commit is newer than the 1.0.3 release. `glm/detail/setup.hpp` already says 1.1.0,
+  but that version has not been released yet.
+- **AngelScript:** official GitHub repository [anjo76/angelscript](https://github.com/anjo76/angelscript),
+  tag `v2.39.0`, commit `4857f0b48a3122967478417c1270ecef1f4fe590` (2026-11-10).
+  The ZIP on angelcode.com has the same content, only with Windows line endings.
+- **stb_image:** `master` branch, commit `562641d1e825ed40414ffa099ce56a24e672a166` (2026-11-11).
+  `LICENSE` was copied from the root of the stb repository.
+- **GLFW, miniaudio, Quill:** the release tags `3.5.1`, `0.11.26` and `v13.1.0`.
 
 ### Removed upstream content
 
@@ -71,9 +79,12 @@ and license texts are in [`COPYRIGHT.txt`](../COPYRIGHT.txt).
 - glm: `doc/`, `test/`, `util/`.
 - imgui: `examples/`, `docs/`, `misc/fonts/` (optional font files under other licenses;
   the default fonts are embedded in `imgui_draw.cpp`).
-- miniaudio: `extras/`, `data/`, `tests/`, `external/`, `examples/`, `website/`, `tools/`, `research/`.
+- miniaudio: `extras/`, `data/`, `tests/`, `external/`, `examples/`, `website/`, `tools/`, `research/`,
+  `resources/` (branding images).
 - quill: `docs/`, `test/`, `benchmarks/`, `examples/`, `fuzz/`.
-- tomlplusplus: `tests/`, `docs/`, `vendor/`, `examples/`, `toml-test/`, `fuzzing/`, `benchmarks/`.
+- tomlplusplus: `tests/`, `docs/`, `vendor/`, `examples/`, `toml-test/`, `fuzzing/`, `benchmarks/`,
+  `tools/` (only used when toml++ is built on its own from a git checkout;
+  `tomlplusplus_REGENERATE` is always OFF when it is added as a subproject).
 
 ### CMake integration
 
