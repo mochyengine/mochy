@@ -1,68 +1,58 @@
-# Prerequisites
-*.d
+# -----------------------------------------------------------------------------
+# Build output
+# Patterns starting with "/" only match in the repository root, so they never
+# hide vendored files inside dependencies/.
+# -----------------------------------------------------------------------------
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+# CMake build directories (CLion: cmake-build-*, CLI/presets: build*/, out/)
+/cmake-build-*/
+/build*/
+/Build/
+/out/
 
-# Precompiled Headers
-*.gch
-*.pch
+# CMake files written into the source tree (in-source builds)
+/CMakeCache.txt
+/CMakeFiles/
+/cmake_install.cmake
+/install_manifest.txt
+/compile_commands.json
+/Makefile
+/build.ninja
+/.ninja_*
 
-# Linker files
-*.ilk
+# Personal CMake presets (CMakePresets.json is versioned)
+CMakeUserPresets.json
 
-# Debugger Files
-*.pdb
+# Release packages, test output and runtime logs
+/dist/
+/Testing/
+/*.log
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-*.so.*
+# -----------------------------------------------------------------------------
+# Compiler and linker artifacts (only in our own code, not in dependencies/)
+# -----------------------------------------------------------------------------
+/src/**/*.o
+/src/**/*.obj
+/src/**/*.a
+/src/**/*.lib
+/src/**/*.so
+/src/**/*.dll
+/src/**/*.exe
+/src/**/*.pdb
+/src/**/*.ilk
 
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
-
-# Build directories
-build/
-Build/
-build-*/
-
-# CMake generated files
-CMakeFiles/
-CMakeCache.txt
-cmake_install.cmake
-Makefile
-install_manifest.txt
-compile_commands.json
-
-# Temporary files
-*.tmp
-*.log
-*.bak
-*.swp
-
-# vcpkg
-vcpkg_installed/
-
-# debug information files
-*.dwo
-
-# test output & cache
-Testing/
+# -----------------------------------------------------------------------------
+# Tooling caches
+# -----------------------------------------------------------------------------
 .cache/
+*.swp
+*.tmp
+*~
+
+# -----------------------------------------------------------------------------
+# IDEs and editors
+# -----------------------------------------------------------------------------
+.idea/
+.obsidian/
+.vs/
+.vscode/
